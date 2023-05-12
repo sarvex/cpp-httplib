@@ -2,6 +2,7 @@
 
 """This script splits httplib.h into .h and .cc parts."""
 
+
 import argparse
 import os
 import sys
@@ -20,8 +21,8 @@ args = args_parser.parse_args()
 
 cur_dir = os.path.dirname(sys.argv[0])
 lib_name = 'httplib'
-header_name = '/' + lib_name + '.h'
-source_name = '/' + lib_name + '.' + args.extension
+header_name = f'/{lib_name}.h'
+source_name = f'/{lib_name}.{args.extension}'
 # get the input file
 in_file = cur_dir + header_name
 # get the output file
@@ -62,6 +63,6 @@ if do_split:
                 fh.write(line)
         fc.write('} // namespace httplib\n')
 
-    print("Wrote {} and {}".format(h_out, cc_out))
+    print(f"Wrote {h_out} and {cc_out}")
 else:
-    print("{} and {} are up to date".format(h_out, cc_out))
+    print(f"{h_out} and {cc_out} are up to date")
